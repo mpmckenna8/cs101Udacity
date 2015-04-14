@@ -14,10 +14,13 @@
 
 
 def make_converter(match, replacement):
+    return (match, replacement)
 
 
 
 def apply_converter(converter, string):
+    match, replace = converter
+    print match
 
 
 
