@@ -13,13 +13,42 @@
 def is_list(p):
     return isinstance(p, list)
 
-def deep_reverse():
+now = None
+
+def revlist(li):
+    newli = []
+    for i in li:
+        newli.insert(0, i)
+    return newli
+
+def deep_reverse(arr):
+    print 'reversin'
+    fin = None
+    finlist =[]
+
+    if is_list(arr):
+        fin = revlist(arr)
+        print fin
+        for i in fin:
+            if is_list(i):
+                nowrev = deep_reverse(i)
+                finlist.append(nowrev)
+            #    finlist.append(revlist(i))
+            else:
+                finlist.append(i)
+        return finlist
+
+    else:
+        return arr
+
+
 
 
 
 #For example,
 
 p = [1, [2, 3, [4, [5, 6]]]]
+print "result of funct"
 print deep_reverse(p)
 #>>> [[[[6, 5], 4], 3, 2], 1]
 print p

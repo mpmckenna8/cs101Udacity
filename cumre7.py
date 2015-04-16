@@ -20,7 +20,15 @@ def make_converter(match, replacement):
 
 def apply_converter(converter, string):
     match, replace = converter
+
+    lenmat = len(match)
+    lenrep = len(replace)
+    while match in string:
+        wheremat = string.index(match)
+        print string
+        string = string.replace(match, replace)
     print match
+    return string
 
 
 

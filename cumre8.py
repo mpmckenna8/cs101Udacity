@@ -7,7 +7,27 @@
 # be the one that appears first. If the input list is empty,
 # it should return None.
 
-def longest_repetition():
+def longest_repetition(arr):
+    elem = {}
+    for i in arr:
+        #print i
+        if i in elem:
+            print 'should not be in here'
+            elem[i] = elem[i] + 1
+        else:
+            elem[i] = 1
+    print elem
+    biggest = None
+    for b in elem:
+        print elem[b]
+        if biggest:
+            if int(elem[b]) > elem[biggest]:
+                print 'change biggest'
+                biggest = b
+        else:
+            biggest = b
+    print 'and the biggest is'
+    return biggest
 
 
 
