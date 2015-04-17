@@ -7,28 +7,30 @@
 # be the one that appears first. If the input list is empty,
 # it should return None.
 
+def is_list(p):
+    return isinstance(p, list)
+
+
 def longest_repetition(arr):
-    elem = {}
+    elem = None
+    last = None
+    thiscount = 0
+    count = 0
     for i in arr:
         #print i
-        if i in elem:
-            print 'should not be in here'
-            elem[i] = elem[i] + 1
-        else:
-            elem[i] = 1
-    print elem
-    biggest = None
-    for b in elem:
-        print elem[b]
-        if biggest:
-            if int(elem[b]) > elem[biggest]:
-                print 'change biggest'
-                biggest = b
-        else:
-            biggest = b
-    print 'and the biggest is'
-    return biggest
+        if last:
+            if i == last:
+                thiscount = thiscount + 1
+            else:
+                if thiscount > count:
+                    elem = last
+                last = i
 
+                thiscount = 1
+        else:
+            last = i
+
+    return elem
 
 
 
@@ -45,3 +47,5 @@ print longest_repetition([1,2,3,4,5])
 
 print longest_repetition([])
 # None
+
+print longest_repetition([[1], [2, 2], [2, 2], [2, 2], [3, 3, 3]])
