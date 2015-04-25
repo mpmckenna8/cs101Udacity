@@ -84,6 +84,10 @@ def generate(oni, rules):
     longst = len(oni)
     oner = 0
     while oner < longst:
+        if longst == 1:
+            doo = oni *3
+            bleep = rules[doo]
+            return  bleep
         if oner == 0:
             print 'generating firt thing' + oni
             comp = oni[-1] + oni[0] + oni[1]
@@ -158,4 +162,8 @@ print cellular_automaton('...x....', 125, 5)
 #print cellular_automaton('...x....', 125, 9)
 #>>> xxxx.x.x
 print cellular_automaton('...x....', 125, 10)
+
+
 #>>> ...xxxxx
+
+print cellular_automaton('.', 21, 1)

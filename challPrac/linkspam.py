@@ -34,59 +34,20 @@ def isspam(graph, area, page, k):
     print page
     print graph
     if k == 0:
-        for i in graph[area]:
-            if area == i and page == i:
-                return True
+        if area == page:
+            return True
         #if done == True:
         return False
-    elif k > 0:
-        if page == area:
+
+    if area in graph[page]:
+        return True
+
+    for i in graph[page]:
+        print 'do ' + i + ' page is ' + page
+        print i == page
+        if isspam(graph, area, i, k-1):
             return True
 
-        for i in graph[page]:
-            print 'do ' + i + ' page is ' + page
-            print i == page
-            if area == i:
-                return True
-            if k >1:
-                if area in graph[i]:
-                    return True
-                    print 'somehow true'
-                else:
-                    print 'dont know what to do here'
-                    print k
-                    if k > 1:
-                        for g in graph[i]:
-                            print 'and ght e g is ' + g
-                            if area == g:
-                                return True
-                            if k >2:
-                                for o in graph[g]:
-                                    if area == o:
-                                        return True
-                                    if k >3:
-                                        for q in graph[o]:
-                                            if area == q:
-                                                return True
-                                        
-
-
-
-
-
-
-
-
-        return False
-
-
-
-
-
-
-    else:
-        return False
-#    print "False"
     return False
 
 
@@ -197,9 +158,9 @@ print compute_ranks(g, 2)
 
 g = {'a': ['a', 'b', 'c'], 'c': ['d'], 'b': ['a'], 'e': ['b'], 'd': ['a', 'e']}
 
-print compute_ranks(g, 3)
+print compute_ranks(g, 6)
 #
 #`0.0848` for `b` i
 
-print compute_ranks(g, 4)
+#print compute_ranks(g, 4)
 #
